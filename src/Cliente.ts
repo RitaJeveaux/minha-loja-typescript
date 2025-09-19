@@ -5,8 +5,6 @@ export class Cliente {
     public nome: string,
     public email: string
   ) {
-    this.id = id,
-      this.nome = nome,
-      this.email = email
+    console.log(`Cliente ${this.nome} criado com sucesso!`);
   }
 }
