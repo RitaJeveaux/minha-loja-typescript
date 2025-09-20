@@ -26,11 +26,10 @@ associando os objetos e verificando o resultado em um console.log
     npx ts-node src/index.ts
     ```
 
-## Comandos
-### para iniciar um projeto do zero:
+## Comandos para iniciar um projeto do zero:
+ ```bash
 npm init -y
 npm i typescript ts-node @types/node --save-dev
 npx tsc --init
+  ```
 
-### para executar:
-npx ts-node src/index.ts
