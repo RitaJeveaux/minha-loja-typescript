@@ -1,6 +1,6 @@
 import { Cliente } from "./Cliente";
 import { Pedido } from "./Pedido";
-import { ItemPedido } from "../ItemPedido";
+import { ItemPedido } from "./ItemPedido";
 
 
 console.log("\n-------- Bem Vindo a Minha Loja --------\n");
@@ -18,8 +18,6 @@ const item1 = new ItemPedido('guitarra', 1500.00, 1);
 const item2 = new ItemPedido('violao', 850.00, 1);
 const item3 = new ItemPedido('caderno', 50.00, 3);
 const item4 = new ItemPedido('canetas', 15.00, 10);
-
-
 
 console.log('\n---------- Pedidos Criados ------------\n');
 // criando instancias de pedidos

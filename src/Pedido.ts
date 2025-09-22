@@ -1,16 +1,18 @@
 import { Cliente } from "./Cliente"
-import { ItemPedido } from "../ItemPedido";
+import { ItemPedido } from "./ItemPedido";
 
 export class Pedido {
   private _total: number = 0;
-
   private _itens: ItemPedido[] = [];
+
+  public cliente: Cliente;
 
   constructor(
     public id: number,
     public data: Date,
-    public cliente: Cliente
+    cliente: Cliente
   ) {
+    this.cliente = cliente;
     console.log(`Pedido #${this.id} criado na data ${this.data.toLocaleString()}!`)
   }
 
@@ -18,7 +20,6 @@ export class Pedido {
     this._itens.push(item);
     this.atualizarTotal();
   }
-
 
   private atualizarTotal(): void {
     let totalCalculado = 0;
@@ -28,7 +29,6 @@ export class Pedido {
     this._total = totalCalculado;
 
   }
-
 
   public get total(): number {
     return this._total;
