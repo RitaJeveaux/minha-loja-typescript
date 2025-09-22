@@ -25,7 +25,7 @@ associando os objetos e verificando o resultado em um console.log
     - Após criar um cliente e um pedido, use o novo método `cliente1.adicionarPedido(pedido1);`.
     - Chame o método de cálculo para testar.
     - Teste o ciclo de vida do pedido.
-    - 
+  
 ## Comandos
 
 ### Pré-requisitos: 
