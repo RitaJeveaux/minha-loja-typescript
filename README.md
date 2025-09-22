@@ -12,8 +12,8 @@ associando os objetos e verificando o resultado em um console.log
 ### Exercicio da aula 3
 
 - Na classe Cliente:
-    - **Adicionar Pedido**: Crie um método público `adicionarPedido(pedido: Pedido): void`. Este método deve adicionar o pedido recebido ao array `pedidos` do cliente.
-    - **Calcular Total Gasto**: Crie um método público `calcularTotalGasto(): number`. Este método deve percorrer o array de pedidos do cliente, somar o total de cada pedido e retornar o valor final.
+    - **Adicionar Pedido**: Crie um método público `adicionarPedido(pedido: Pedido): void`. 
+    - **Calcular Total Gasto**: Crie um método público `calcularTotalGasto(): number`. 
 - Na classe Pedido:
     - **Status do Pedido**: Adicione um novo atributo privado `_status: string`, e inicialize-o com o valor `"pendente"` no `constructor`.
     - **Métodos de Status**: Crie três métodos públicos que alteram o status do pedido:
@@ -23,21 +23,10 @@ associando os objetos e verificando o resultado em um console.log
     - **Getter de Status**: Crie um getter público `public get status(): string` para permitir a leitura do status de fora da classe.
 - No index.ts
     - Após criar um cliente e um pedido, use o novo método `cliente1.adicionarPedido(pedido1);`.
-    - Chame o método de cálculo para testar:
-      ```typescript
-      console.log(`Total gasto por ${cliente1.nome}: R$ ${cliente1.calcularTotalGasto()}`);
-      ```
-    - Teste o ciclo de vida do pedido:
-      ```typescript
-      console.log(`Status inicial: ${pedido1.status}`);
-      pedido1.pagar();
-      console.log(`Status após pagar: ${pedido1.status}`);
-      pedido1.enviar();
-      console.log(`Status após enviar: ${pedido1.status}`);
-      ```
-
+    - Chame o método de cálculo para testar.
+    - Teste o ciclo de vida do pedido.
+    - 
 ## Comandos
-
 
 ### Pré-requisitos: 
 Certifique-se de ter o Node.js instalado em sua máquina.
