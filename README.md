@@ -11,7 +11,6 @@ associando os objetos e verificando o resultado em um console.log
 - Fazer com que a classe Pedido, gerencie seus itens e calcule o total de forma autônoma.
 ### Exercicio da aula 3
 
-<<<<<<< exercicio-aula3
 - Na classe Cliente:
     - **Adicionar Pedido**: Crie um método público `adicionarPedido(pedido: Pedido): void`. Este método deve adicionar o pedido recebido ao array `pedidos` do cliente.
     - **Calcular Total Gasto**: Crie um método público `calcularTotalGasto(): number`. Este método deve percorrer o array de pedidos do cliente, somar o total de cada pedido e retornar o valor final.
@@ -82,4 +81,3 @@ npm i typescript ts-node @types/node --save-dev
 npx tsc --init
   ```
 
->>>>>>> main
