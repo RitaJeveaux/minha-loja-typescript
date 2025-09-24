@@ -62,6 +62,18 @@ console.log(cliente1);
 console.log('\nResumo do pedido 1:');
 console.log(pedido1.obterResumo());
 
+console.log('\n---- Testando validações do ItemPedido --------');
+console.log(`Tentando criar item com valor negativo...`);
+const itemInvalido1 = new ItemPedido('Produto ruim.', -100, 1);
+console.log(itemInvalido1);
+console.log(`Tentando criar item com quantidade negativa...`);
+const itemInvalido2 = new ItemPedido('Produto ruim.', 100, -1);
+console.log(itemInvalido2);
+console.log(`\nTentando atribuir quantidade negativa a um pedido existente...`);
+console.log(`Quantidade original do item2: ${item2.quantidade}`);
+item2.quantidade = -5;
+console.log(`Quantidade do item2 após tentativa de alteração: ${item2.quantidade}`);
+
 console.log('\n---- Testando Metodo Total Gasto ------\n');
 console.log(`Total gasto por ${cliente1.nome} R$ ${cliente1.calcularTotalGasto().toFixed(2)}`)
 
@@ -71,7 +83,8 @@ console.log(`\n Status inicial do pedido 1: ${pedido1.status}`)
 pedido1.pagar();
 console.log(`\n Status do pedido 1 após pago: ${pedido1.status}`)
 pedido1.enviar();
-console.log(`\n Status do pedido 1: após envio: ${pedido1.status}`)
-pedido1.entregar;
+console.log(`\n Status do pedido 1 após envio: ${pedido1.status}`)
+pedido1.entregar();
+console.log(`\n Status do pedido 1 após entrega: ${pedido1.status}`)
 
 console.log('\n--------- Sistema Finalizado ----------\n');
