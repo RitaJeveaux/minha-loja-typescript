@@ -4,6 +4,7 @@ import { ItemPedido } from "./ItemPedido";
 export class Pedido {
   private _total: number = 0;
   private _itens: ItemPedido[] = [];
+  private _status: string = 'pendente';
 
   public cliente: Cliente;
 
@@ -44,4 +45,26 @@ export class Pedido {
     resumo += `Total: R$ ${this.total.toFixed(2)}`;
     return resumo;
   }
+
+  public pagar(): void {
+    this._status = 'pago';
+  }
+
+  public enviar(): void {
+    if (this._status === 'pago') {
+      this._status = 'enviado';
+    }
+  }
+
+  public entregar(): void {
+    if (this._status === 'enviado') {
+      this._status = 'entregue';
+    }
+  }
+
+
+  public get status(): string {
+    return this._status;
+  }
+
 }

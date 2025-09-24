@@ -26,8 +26,8 @@ const pedido2 = new Pedido(102, new Date(), cliente2);
 console.log('\n');
 
 // associando pedidos aos clientes
-cliente1.pedidos.push(pedido1);
-cliente2.pedidos.push(pedido2);
+cliente1.adicionarPedido(pedido1);
+cliente2.adicionarPedido(pedido2);
 
 //adicionando itens ao pedido
 pedido1.adicionarItem(item1);
@@ -62,5 +62,16 @@ console.log(cliente1);
 console.log('\nResumo do pedido 1:');
 console.log(pedido1.obterResumo());
 
+console.log('\n---- Testando Metodo Total Gasto ------\n');
+console.log(`Total gasto por ${cliente1.nome} R$ ${cliente1.calcularTotalGasto().toFixed(2)}`)
+
+console.log('\n---- Testando Fluxo de Entrega --------');
+
+console.log(`\n Status inicial do pedido 1: ${pedido1.status}`)
+pedido1.pagar();
+console.log(`\n Status do pedido 1 após pago: ${pedido1.status}`)
+pedido1.enviar();
+console.log(`\n Status do pedido 1: após envio: ${pedido1.status}`)
+pedido1.entregar;
 
 console.log('\n--------- Sistema Finalizado ----------\n');
