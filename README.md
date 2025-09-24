@@ -1,25 +1,22 @@
-# E-commerce Simples com Typescript 
+# Minha Loja - TypeScript
 
-## Comandos
+Aplicação de linha de comando para gerenciar um e-commerce simples, desenvolvida como parte do estudo de Programação Orientada a Objetos com TypeScript.
 
-### Pré-requisitos: 
-Certifique-se de ter o Node.js instalado em sua máquina.
+## Diagrama UML
 
-### Instalar as dependências:
-```bash
-npm install
-```
+A imagem abaixo representa o diagrama de classes UML do projeto, mostrando a relação entre `Cliente`, `Pedido` e `ItemPedido`.
 
-### Criar um projeto do zero:
-```bash
-npm init -y
-npm i typescript ts-node @types/node --save-dev
-npx tsc --init
-```
+[!Diagrama UML do Projeto](./img/minha-loja.png)
 
-### Executar a simulação:
-```bash
-npx ts-node src/index.ts
-```
+## Como Executar
 
+1.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
+2.  **Execute o arquivo principal:**
+    O `index.ts` contém um exemplo de uso das classes para criar clientes, pedidos e itens.
+    ```bash
+    npx ts-node src/index.ts
+    ```
