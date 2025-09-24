@@ -72,7 +72,7 @@ console.log(itemInvalido2);
 console.log(`\nTentando atribuir quantidade negativa a um pedido existente...`);
 console.log(`Quantidade original do item2: ${item2.quantidade}`);
 item2.quantidade = -5;
-console.log(`Quantidade do item2 após tentativa de alteração: ${item2.quantidade}`);
+console.log(`Quantidade do item2 após tentativa de alteraçã: ${item2.quantidade}`);
 
 console.log('\n---- Testando Metodo Total Gasto ------\n');
 console.log(`Total gasto por ${cliente1.nome} R$ ${cliente1.calcularTotalGasto().toFixed(2)}`)
