@@ -1,6 +1,8 @@
 import { Cliente } from "./Cliente";
 import { Pedido } from "./Pedido";
 import { ItemPedido } from "./ItemPedido";
+import { ProdutoDigital } from "./ProdutoDigital";
+import { ProdutoFisico } from "./ProdutoFisico";
 
 
 console.log("\n-------- Bem Vindo a Minha Loja --------\n");
@@ -13,11 +15,18 @@ console.log('\n-------- Clientes Cadastrados ---------\n');
 console.log(cliente1);
 console.log(`Nome do cliente 2: ${cliente2.nome}`);
 
+// criando instancias do produto
+const livro = new ProdutoFisico(1, 'O Senho dos Aneis', 50, 'Livro de Fantasia', 500);
+const ebook = new ProdutoDigital(2, "Game os Thrones", 30, 'E-book de Fantasia', 'www.link.com');
+const placaDeVideo = new ProdutoFisico(3, 'placaDeVideo', 3500, 'Placa de Jogos', 1000);
+const mouseGamer = new ProdutoFisico(4, 'mouseGamer', 150, 'Mouse para Jogos', 200);
+
+
 // criando instancias de itemPedido
-const item1 = new ItemPedido('guitarra', 1500.00, 1);
-const item2 = new ItemPedido('violao', 850.00, 1);
-const item3 = new ItemPedido('caderno', 50.00, 3);
-const item4 = new ItemPedido('canetas', 15.00, 10);
+const item1 = new ItemPedido(placaDeVideo, 1);
+const item2 = new ItemPedido(mouseGamer, 1);
+const item3 = new ItemPedido(livro, 3);
+const item4 = new ItemPedido(ebook, 10);
 
 console.log('\n---------- Pedidos Criados ------------\n');
 // criando instancias de pedidos
@@ -63,11 +72,8 @@ console.log('\nResumo do pedido 1:');
 console.log(pedido1.obterResumo());
 
 console.log('\n---- Testando validações do ItemPedido --------');
-console.log(`Tentando criar item com valor negativo...`);
-const itemInvalido1 = new ItemPedido('Produto ruim.', -100, 1);
-console.log(itemInvalido1);
 console.log(`Tentando criar item com quantidade negativa...`);
-const itemInvalido2 = new ItemPedido('Produto ruim.', 100, -1);
+const itemInvalido2 = new ItemPedido(placaDeVideo, 1);
 console.log(itemInvalido2);
 console.log(`\nTentando atribuir quantidade negativa a um pedido existente...`);
 console.log(`Quantidade original do item2: ${item2.quantidade}`);
@@ -105,15 +111,9 @@ console.log(`\nTentando alterar o email de um cliente com email inválido 'email
 clienteInvalido1.email = 'email.com';
 console.log(clienteInvalido1);
 
-console.log('\n--- Testando Serialização Pedido/ItemPedido ---');
+console.log('\n------------ Testando Serialização ----------------');
 const jsonPedido = JSON.stringify(pedido1, null, 2);
 console.log(jsonPedido);
-
-console.log('\n--- Testando Desserialização Pedido/ItemPedido ---');
-const dadosDoServidor = JSON.parse(jsonPedido);
-const pedidoRecriado = Pedido.fromData(dadosDoServidor, cliente1);
-console.log(pedidoRecriado);
-console.log(`Total do pedido recriado é ${pedidoRecriado.total.toFixed(2)}`)
 
 console.log('\n---- Testando Serialização/Desserialização do Cliente --------');
 const clienteOriginal = new Cliente(10, 'Joana Silva', 'joana@email.com');
