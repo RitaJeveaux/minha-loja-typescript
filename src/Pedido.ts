@@ -62,7 +62,6 @@ export class Pedido {
     }
   }
 
-
   public get status(): string {
     return this._status;
   }
@@ -77,12 +76,12 @@ export class Pedido {
     }
   }
 
-
-  public static fromData(data: any, cliente: Cliente): Pedido {
-    const novoPedido = new Pedido(data.id, new Date(data.data), cliente);
-    const itens = data.itens.map((itemData: any) => ItemPedido.fromData(itemData));
-    itens.forEach((item: ItemPedido) => novoPedido.adicionarItem(item));
-    return novoPedido;
-  }
+  //necessita refatorar para atender a inclusão daClasse Produto
+  // public static fromData(data: any, cliente: Cliente): Pedido {
+  //   const novoPedido = new Pedido(data.id, new Date(data.data), cliente);
+  //   const itens = data.itens.map((itemData: any) => ItemPedido.fromData(itemData));
+  //   itens.forEach((item: ItemPedido) => novoPedido.adicionarItem(item));
+  //   return novoPedido;
+  // }
 
 }

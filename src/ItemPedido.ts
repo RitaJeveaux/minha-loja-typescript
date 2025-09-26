@@ -1,31 +1,24 @@
+import { Produto } from "./Produto";
+
+
+
 export class ItemPedido {
 
-  private _valorUnitario: number = 0;
-  private _quantidade: number = 0;
-
   constructor(
-    public nomeProduto: string,
-    valor: number,
-    qtd: number
-  ) {
-    this.valorUnitario = valor;
-    this.quantidade = qtd;
-  }
+    private _produto: Produto,
+    private _quantidade: number
+  ) { }
 
   public get valorUnitario(): number {
-    return this._valorUnitario;
+    return this._produto.preco;
+  }
+
+  public get nomeProduto(): string {
+    return this._produto.nome;
   }
 
   public get quantidade(): number {
     return this._quantidade;
-  }
-
-  public set valorUnitario(novoValor: number) {
-    if (novoValor > 0) {
-      this._valorUnitario = novoValor;
-    } else {
-      console.log(`O valor unitário deve ser positivo.`)
-    }
   }
 
   public set quantidade(novaQuantidade: number) {
@@ -37,25 +30,14 @@ export class ItemPedido {
   }
 
   public calcularSubTotal(): number {
-    return this._valorUnitario * this._quantidade;
+    return this.valorUnitario * this._quantidade;
   }
 
   public toJSON() {
     return {
-      nomeProduto: this.nomeProduto,
-      valorUnitario: this._valorUnitario,
-      quantidade: this._quantidade
+      produto: this._produto.toJSON(),
+      quantidade: this._quantidade,
     }
   }
-
-  public static fromData(data: any): ItemPedido {
-    return new ItemPedido(
-      data.nomeProduto,
-      data.valorUnitario,
-      data.quantidade
-    );
-
-  }
-
 
 }
