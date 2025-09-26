@@ -67,4 +67,22 @@ export class Pedido {
     return this._status;
   }
 
+  public toJSON() {
+    return {
+      id: this.id,
+      data: this.data,
+      status: this._status,
+      total: this._total,
+      itens: this._itens.map(item => item.toJSON())
+    }
+  }
+
+
+  public static fromData(data: any, cliente: Cliente): Pedido {
+    const novoPedido = new Pedido(data.id, new Date(data.data), cliente);
+    const itens = data.itens.map((itemData: any) => ItemPedido.fromData(itemData));
+    itens.forEach((item: ItemPedido) => novoPedido.adicionarItem(item));
+    return novoPedido;
+  }
+
 }

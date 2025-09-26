@@ -105,6 +105,16 @@ console.log(`\nTentando alterar o email de um cliente com email inválido 'email
 clienteInvalido1.email = 'email.com';
 console.log(clienteInvalido1);
 
+console.log('\n--- Testando Serialização Pedido/ItemPedido ---');
+const jsonPedido = JSON.stringify(pedido1, null, 2);
+console.log(jsonPedido);
+
+console.log('\n--- Testando Desserialização Pedido/ItemPedido ---');
+const dadosDoServidor = JSON.parse(jsonPedido);
+const pedidoRecriado = Pedido.fromData(dadosDoServidor, cliente1);
+console.log(pedidoRecriado);
+console.log(`Total do pedido recriado é ${pedidoRecriado.total.toFixed(2)}`)
+
 console.log('\n---- Testando Serialização/Desserialização do Cliente --------');
 const clienteOriginal = new Cliente(10, 'Joana Silva', 'joana@email.com');
 const jsonCliente = JSON.stringify(clienteOriginal.toJSON(), null, 2);
@@ -113,7 +123,6 @@ console.log(jsonCliente);
 
 const clienteRecriado = Cliente.fromJSON(jsonCliente);
 console.log(clienteRecriado);
-
 
 console.log('\n-- Testando Atualização Parcial e Validações --');
 const pathData = { email: "novoemail.invalido", nome: 'J' };
