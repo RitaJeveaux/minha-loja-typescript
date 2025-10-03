@@ -1,46 +1,27 @@
 import { Pedido } from "./Pedido";
 
-
-export class Cliente {
+export abstract class ClienteBase {
 
   public pedidos: Pedido[] = [];
-  private _id: number = 0;
-  private _nome: string;
+  private _id: number = 0; 
   private _email: string;
 
   constructor(
-    id: number,
-    nome: string,
+    id: number, 
     email: string
   ) {
-    this._id = id;
-    this._nome = '';
-    this._email = '';
-    this.nome = nome;
-    this.email = email;
-    console.log(`Cliente ${this.nome} criado com sucesso!`);
+    this._id = id;    
+    this._email = '';  
+    this.email = email; 
   }
-
 
   public get id(): number {
     return this._id;
   }
 
-  public get nome(): string {
-    return this._nome;
-  }
-
   public get email(): string {
     return this._email;
-  }
-
-  public set nome(novoNome: string) {
-    if (novoNome.length < 3) {
-      console.log(`Erro: O nome deve ter no mínimo 3 caracteres.`);
-      return;
-    }
-    this._nome = novoNome;
-  }
+  } 
 
   public set email(novoEmail: string) {
     if (!novoEmail.includes('@')) {
@@ -64,21 +45,12 @@ export class Cliente {
 
   public toJSON() {
     return {
-      id: this.id,
-      nome: this.nome,
+      id: this.id,     
       email: this.email
     }
   }
 
-  public static fromJSON(jsonData: string): Cliente {
-    const data = JSON.parse(jsonData);
-    return new Cliente(data.id, data.nome, data.email);
-  }
-
   public aplicarAtualizacoes(dados: any): void {
-    if (dados.nome) {
-      this.nome = dados.nome;
-    }
     if (dados.email) {
       this.email = dados.email;
     }
