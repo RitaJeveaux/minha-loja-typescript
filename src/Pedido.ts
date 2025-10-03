@@ -1,20 +1,18 @@
-import { Cliente } from "./Cliente"
-import { ItemPedido } from "./ItemPedido";
+import { ClienteBase } from './ClienteBase';
+import { ItemPedido } from './ItemPedido';
 
 export class Pedido {
   private _total: number = 0;
   private _itens: ItemPedido[] = [];
   private _status: string = 'pendente';
 
-  public cliente: Cliente;
+  public cliente: ClienteBase;
 
-  constructor(
-    public id: number,
-    public data: Date,
-    cliente: Cliente
-  ) {
+  constructor(public id: number, public data: Date, cliente: ClienteBase) {
     this.cliente = cliente;
-    console.log(`Pedido #${this.id} criado na data ${this.data.toLocaleString()}!`)
+    console.log(
+      `Pedido #${this.id} criado na data ${this.data.toLocaleString()}!`,
+    );
   }
 
   public adicionarItem(item: ItemPedido): void {
@@ -28,7 +26,6 @@ export class Pedido {
       totalCalculado += item.calcularSubTotal();
     }
     this._total = totalCalculado;
-
   }
 
   public get total(): number {
@@ -36,11 +33,24 @@ export class Pedido {
   }
 
   public obterResumo(): string {
-    let resumo = `Pedido #${this.id} - Cliente: ${this.cliente.nome}\n`;
+    let nomeCliente: string;
+    if ('nome' in this.cliente) {
+      nomeCliente = (this.cliente as any).nome;
+    } else if ('razaoSocial' in this.cliente) {
+      nomeCliente = (this.cliente as any).razaoSocial;
+    } else {
+      nomeCliente = 'Cliente Desconhecido';
+    }
+
+    let resumo = `Pedido #${this.id} - Cliente: ${nomeCliente}\n`;
     resumo += `Data: ${this.data.toLocaleDateString()}\n`;
     resumo += `Itens:\n`;
     for (const item of this._itens) {
-      resumo += `- ${item.nomeProduto}: ${item.quantidade} X R$ ${item.valorUnitario.toFixed(2)} = R$ ${item.calcularSubTotal().toFixed(2)}\n`;
+      resumo += `- ${item.nomeProduto}: ${
+        item.quantidade
+      } X R$ ${item.valorUnitario.toFixed(2)} = R$ ${item
+        .calcularSubTotal()
+        .toFixed(2)}\n`;
     }
     resumo += `Total: R$ ${this.total.toFixed(2)}`;
     return resumo;
@@ -72,16 +82,7 @@ export class Pedido {
       data: this.data,
       status: this._status,
       total: this._total,
-      itens: this._itens.map(item => item.toJSON())
-    }
+      itens: this._itens.map((item) => item.toJSON()),
+    };
   }
-
-  //necessita refatorar para atender a inclusão daClasse Produto
-  // public static fromData(data: any, cliente: Cliente): Pedido {
-  //   const novoPedido = new Pedido(data.id, new Date(data.data), cliente);
-  //   const itens = data.itens.map((itemData: any) => ItemPedido.fromData(itemData));
-  //   itens.forEach((item: ItemPedido) => novoPedido.adicionarItem(item));
-  //   return novoPedido;
-  // }
-
 }
